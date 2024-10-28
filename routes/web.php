@@ -6,6 +6,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +48,14 @@ Route::post('/likes', [LikeController::class, 'store']);
 
 Route::get('/likes/{id}', [LikeController::class, 'show']);
 Route::delete('/likes/{id}', [LikeController::class, 'delete']);
+
+
+Route::get('user', [UserController::class, 'index'])->name('user.index');
+Route::get('user/{id}', [UserController::class, 'show'])->name('user.show');
+Route::post('/user', [UserController::class, 'store'])->name('user.store');
+Route::put('/user/{user}', [UserController::class, 'update'])->name('user.update');
+Route::delete('/user/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+
 
 Route::get('/laravel', function () {
     return view('welcome');
